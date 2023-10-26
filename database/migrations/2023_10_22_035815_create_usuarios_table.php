@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nome');
             $table->string('email')->unique();
             $table->string('senha');
-            $table->string('foto');
+            $table->string('foto')->nullable();
             $table->unsignedBigInteger('perfil_id');
             $table->foreign('perfil_id')->references('id')->on('perfil');
             $table->timestamps();

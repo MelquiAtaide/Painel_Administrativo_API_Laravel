@@ -15,10 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('usuario_id');
             $table->foreign('usuario_id')->references('id')->on('usuarios');
-            $table->unsignedBigInteger('categoria_id');
-            $table->foreign('categoria_id')->references('id')->on('categorias');
-            $table->unsignedBigInteger('termo_id');
-            $table->foreign('termo_id')->references('id')->on('termos');
+            $table->unsignedBigInteger('conceito_id');
+            $table->foreign('conceito_id')->references('id')->on('conceitos');
             $table->timestamps();
         });
     }

@@ -11,5 +11,7 @@ class LoginController extends Controller
     }
     public function logar(){
         dd("caiu aqui");
+
+        return redirect()->route('redirecionarDashboard');
     }
 }

@@ -1,0 +1,89 @@
+.header-conteudo{
+    margin: 15px;
+    margin-top: 30px;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #37A69C;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+.titulo{
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 25px;
+}
+.adicionar-novo{
+    all: unset;
+    padding: 5px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+.icone-adicionar-novo{
+    color: #ffffff;
+    font-size: 20px;
+    margin: 5px;
+}
+.td-acao{
+    width: 10%;
+}
+.td-acao form{
+display: inline-block;
+}
+.btn-deletar{
+    all: unset;
+}
+.icone-tabela {
+    color: #73CAC2;
+    font-size: 20px;
+    margin: 5px;
+}
+.container-conteudo{
+    padding: 5px;
+    border-radius: 15px;
+    background-color: #D9D9D9;
+}
+.tabela-container{
+    margin: 15px;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.categoria{
+    width: 30% !important;
+}
+.botoesModal{
+    margin: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.btn-salvar{
+    all: unset;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    padding: 7px;
+    width: 18%;
+    text-align: center;
+    background-color: #73CAC2;
+    color: #ffffff;
+}
+.btn-salvar:hover{
+    background-color: #4c7e78;
+}
+.erros-conteudo{
+    position: absolute;
+    left: 251px;
+    top: 64px;
+    margin-bottom: 30px;
+}
+.editar{
+    all: unset;
+}
+.form-editar{
+    width: 100%;
+}
