@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class conceitosRequest extends FormRequest
+class eixosRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,18 +22,16 @@ class conceitosRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'categoria' => 'required',
-            'termo' => 'required|string',
-            'definicao' => 'required|string'
+            'tipo_eixo' => 'required',
+            'nome_eixo' => 'required|string|unique:eixos,nome_eixo',
         ];
     }
     public function messages(){
         return[
-            'categoria.required' => 'O campo categoria é obrigatório!',
-            'termo.required' => 'O campo termo é obrigatório!',
-            'termo.string' => 'O campo termo deve ser somente de textos!',
-            'definicao.required' => 'O campo definição é obrigatório!',
-            'definicao.string' => 'O campo definição deve ser somente de textos!',
+            'tipo_eixo.required' => 'O campo tipo é obrigatório!',
+            'nome_eixo.required' => 'O campo nome é obrigatório!',
+            'nome_eixo.string' => 'O campo nome deve ser somente de textos!',
+            'nome_eixo.unique' => 'Este eixo já existe',
         ];
     }
 }

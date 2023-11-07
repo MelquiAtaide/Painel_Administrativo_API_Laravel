@@ -10,18 +10,12 @@ use Illuminate\Support\Facades\Hash;
 
 class UsuariosController extends Controller
 {
-    public function redirecionarUsuarios(){
+    public function listarUsuarios(){
         $perfis = Perfil::all();
         $usuarios = Usuarios::all();
         return view('admin.usuarios', ['usuarios' => $usuarios, 'perfis' => $perfis]);
     }
-    public function redirecionarCadastrar(){
-
-        $perfis = Perfil::all();
-
-        return view('admin.cadastrar', ['perfis' => $perfis]);
-    }
-    public function cadastrar(cadastrarUsuarioRequest $request){
+    public function cadastrarUsuario(cadastrarUsuarioRequest $request){
         try {
             $usuario = new Usuarios;
             $senha = Hash::make($request->senha);
@@ -32,8 +26,9 @@ class UsuariosController extends Controller
             $usuario->perfil_id = $request->perfil;
 
             $usuario->save();
-            return redirect()->route('redirecionar.usuarios')->with('sucesso', 'Cadastrado com sucesso!');
+            return redirect()->route('listar.usuarios')->with('sucesso', 'Cadastrado com sucesso!');
         } catch (\Throwable $th) {
+            dd($th);
             return redirect()->back()->withErrors('Ocorreu um erro ao cadastrar!');
         }
     }
@@ -41,7 +36,7 @@ class UsuariosController extends Controller
         try {
             $usuario = Usuarios::where('id', $id)->delete();
 
-            return redirect()->route('redirecionar.usuarios')->with('sucesso', 'Deletado com sucesso!');
+            return redirect()->route('listar.usuarios')->with('sucesso', 'Deletado com sucesso!');
         } catch (\Throwable $th) {
             dd($th);
             return redirect()->back()->withErrors('Ocorreu um erro ao deletar!');
@@ -59,8 +54,9 @@ class UsuariosController extends Controller
             $usuario->perfil_id = $request->perfil;
 
             $usuario->save();
-            return redirect()->route('redirecionar.usuarios')->with('sucesso', 'Editado com sucesso!');
+            return redirect()->route('listar.usuarios')->with('sucesso', 'Editado com sucesso!');
         } catch (\Throwable $th) {
+            dd($th);
             return redirect()->back()->withErrors('Ocorreu um erro ao editar!');
         }
     }

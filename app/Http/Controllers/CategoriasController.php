@@ -27,6 +27,20 @@ class CategoriasController extends Controller
             return redirect()->back()->withErrors('Ocorreu um erro ao cadastrar!');
         }
     }
+    public function editarCategoria(categoriasRequest $request, $id){
+        try {
+            $categorias = Categorias::where('id', $id)->first();
+
+            $categorias->sigla = $request->sigla;
+            $categorias->descricao = $request->descricao;
+
+            $categorias->save();
+            return redirect()->route('listar.categorias')->with('sucesso', 'Editada com sucesso!');
+        } catch (\Throwable $th) {
+            dd($th);
+            return redirect()->back()->withErrors('Ocorreu um erro ao editar!');
+        }
+    }
     public function deletarCategoria($id){
         try {
             $categoria = Categorias::where('id', $id)->delete();

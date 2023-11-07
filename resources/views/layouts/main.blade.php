@@ -30,9 +30,13 @@
             <ul>
                 <li><div class="lista-container"></div></li>
                 <hr class="linha">
-                <li><div class="lista-container"><a href="{{route('redirecionar.usuarios')}}"><i class="fa-solid fa-users icone-lateral"></i>Usuários</a></div></li>
+                <li><div class="lista-container"><a href="{{route('listar.usuarios')}}"><i class="fa-solid fa-users icone-lateral"></i>Usuários</a></div></li>
                 <hr class="linha">
-                <li><div class="lista-container"><a href="{{route('listar.conceitos')}}"><i class="fa-regular fa-rectangle-list icone-lateral"></i>Conceitos</a></div></li>
+                <li><div class="lista-container"><a href="{{route('listar.termo')}}"><i class="fa-regular fa-rectangle-list icone-lateral"></i>Termos</a></div></li>
+                <li><div class="lista-container"><a href="#"><i class="fa-regular fa-rectangle-list icone-lateral"></i>DE/RE</a></div></li>
+                <li><div class="lista-container"><a href="#"><i class="fa-regular fa-rectangle-list icone-lateral"></i>IE</a></div></li>
+                <hr class="linha">
+                <li><div class="lista-container"><a href="{{route('listar.eixo')}}"><i class="fa-regular fa-rectangle-list icone-lateral"></i>Eixos</a></div></li>
                 <hr class="linha">
                 <li><div class="lista-container"><a href="{{route('listar.categorias')}}"><i class="fa-regular fa-rectangle-list icone-lateral"></i>Categorias</a></div></li>
                 <hr class="linha">

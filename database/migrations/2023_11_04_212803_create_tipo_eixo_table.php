@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('favoritos', function (Blueprint $table) {
+        Schema::create('tipo_eixo', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('usuario_id');
-            $table->foreign('usuario_id')->references('id')->on('usuarios');
-            $table->unsignedBigInteger('conceito_id');
-            $table->foreign('conceito_id')->references('id')->on('conceitos');
+            $table->string('nome_tipo');
+            $table->string('descricao');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('favoritos');
+        Schema::dropIfExists('tipo_eixo');
     }
 };

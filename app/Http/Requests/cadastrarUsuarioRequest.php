@@ -23,7 +23,7 @@ class cadastrarUsuarioRequest extends FormRequest
     {
         return [
             'nome' => 'required|string|max:255',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:usuarios,email',
             'perfil' => 'required',
             'senha' => 'required|min:8|max:100',
             'confirmar-senha' => 'required|same:senha'
@@ -36,12 +36,13 @@ class cadastrarUsuarioRequest extends FormRequest
             'nome.max' => 'O campo nome deve ter no máximo 255 caracteres!',
             'email.required' => 'O campo E-mail é obrigatório!',
             'email.email' => 'O campo E-mail deve ser um endereço de e-mail válido!',
+            'email.unique' => 'E-mail usado já possui cadastro!',
             'perfil.required' => 'Selecione um perfil!',
             'senha.required' => 'O campo senha é obrigatório!',
             'senha.min' => 'O campo senha deve ter mais de 8 caracteres!',
             'senha.max' => 'O campo senha deve ter no máximo 100 caracteres!',
             'confirmar-senha.required' => 'Confirmar a senha é obrigatório!',
-            'confirmar-senha.same' => 'As senhas devem ser iguais!'
+            'confirmar-senha.same' => 'As senhas devem ser iguais!',
         ];
     }
 }

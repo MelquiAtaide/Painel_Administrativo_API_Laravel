@@ -11,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('conceitos', function (Blueprint $table) {
+        Schema::create('termos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('categoria_id');
             $table->foreign('categoria_id')->references('id')->on('categorias');
-            $table->string('termo');
-            $table->string('definicao');
+            $table->unsignedBigInteger('foco_id');
+            $table->foreign('foco_id')->references('id')->on('eixos');
+            $table->unsignedBigInteger('julgamento_id')->nullable();
+            $table->foreign('julgamento_id')->references('id')->on('eixos');
+            $table->unsignedBigInteger('acao_id')->nullable();
+            $table->foreign('acao_id')->references('id')->on('eixos');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('conceitos');
+        Schema::dropIfExists('termos');
     }
 };

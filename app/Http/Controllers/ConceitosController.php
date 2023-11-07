@@ -10,7 +10,9 @@ use App\Models\Categorias;
 class ConceitosController extends Controller
 {
     public function listarConceitos(){
-        $categorias = Categorias::all();
+        // seleciona as categorias pela coluna sigla em ordem alfabetica
+        $categorias = Categorias::orderBy('sigla', 'asc')->get();
+
         $conceitos = Conceitos::all();
         return view('admin.conceitos', [
             'conceitos' => $conceitos,
