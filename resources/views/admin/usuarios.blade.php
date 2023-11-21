@@ -166,6 +166,9 @@
                 @endforeach
             </tbody>
         </table>
+        <div>
+            {{$usuarios->links()}}
+        </div>
     </div>
 </div>
 

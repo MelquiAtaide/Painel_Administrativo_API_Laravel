@@ -33,14 +33,12 @@
                 <li><div class="lista-container"><a href="{{route('listar.usuarios')}}"><i class="fa-solid fa-users icone-lateral"></i>Usuários</a></div></li>
                 <hr class="linha">
                 <li><div class="lista-container"><a href="{{route('listar.termo')}}"><i class="fa-regular fa-rectangle-list icone-lateral"></i>Termos</a></div></li>
-                <li><div class="lista-container"><a href="#"><i class="fa-regular fa-rectangle-list icone-lateral"></i>DE/RE</a></div></li>
-                <li><div class="lista-container"><a href="#"><i class="fa-regular fa-rectangle-list icone-lateral"></i>IE</a></div></li>
                 <hr class="linha">
                 <li><div class="lista-container"><a href="{{route('listar.eixo')}}"><i class="fa-regular fa-rectangle-list icone-lateral"></i>Eixos</a></div></li>
                 <hr class="linha">
                 <li><div class="lista-container"><a href="{{route('listar.categorias')}}"><i class="fa-regular fa-rectangle-list icone-lateral"></i>Categorias</a></div></li>
                 <hr class="linha">
-                <li><div class="lista-container"><a href="#"><i class="fa-solid fa-right-from-bracket icone-lateral"></i>Sair</a></div></li>
+                <li><div class="lista-container"><a href="{{route('logout')}}"><i class="fa-solid fa-right-from-bracket icone-lateral"></i>Sair</a></div></li>
                 <hr class="linha">
             </ul>
         </nav>
@@ -48,6 +46,7 @@
     <main class="content">
         @yield('content')
     </main>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </body>

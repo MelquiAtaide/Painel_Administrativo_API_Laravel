@@ -140,6 +140,9 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="mt-2">
+            {{ $eixos->links() }}
+        </div>
     </div>
 </div>
 

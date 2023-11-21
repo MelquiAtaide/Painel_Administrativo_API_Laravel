@@ -10,9 +10,12 @@ use Illuminate\Support\Facades\Hash;
 
 class UsuariosController extends Controller
 {
+    public function index(){
+        return redirect()->route('listar.usuarios');
+    }
     public function listarUsuarios(){
         $perfis = Perfil::all();
-        $usuarios = Usuarios::all();
+        $usuarios = Usuarios::paginate(15);
         return view('admin.usuarios', ['usuarios' => $usuarios, 'perfis' => $perfis]);
     }
     public function cadastrarUsuario(cadastrarUsuarioRequest $request){

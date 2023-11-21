@@ -66,7 +66,7 @@
                                 <label class="form-label" for="acao">Ação</label>
                                 <select class="form-select" name="acao" id="acao">
                                     <option disabled selected>Selecionar</option>
-                                    @foreach ($acaos as $acao)
+                                    @foreach ($acoes as $acao)
                                         <option value="{{$acao->id}}">{{$acao->nome_eixo}}</option>
                                     @endforeach
                                 </select>
@@ -80,6 +80,18 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="container-filtro">
+        <form action="{{route('filtrar.termos')}}" method="GET">
+            @csrf
+            <select name="filtrarTermos" id="filtrarTermos" class="form-select">
+                <option selected disabled hidden value="">Filtrar por categoria</option>
+                @foreach ($categorias as $categoria)
+                    <option value="{{$categoria->id}}">{{$categoria->sigla}}</option>
+                @endforeach
+            </select>
+            <button type="submit" class="btn-filtrar">Filtrar</button>
+        </form>
     </div>
     <div class="tabela-container">
         <table class="table">
@@ -116,6 +128,66 @@
                                             <form action="{{route('editar.termo', $termo->id)}}" method="POST" class="form-editar">
                                                 @csrf
                                                 @method('PUT')
+                                                <div class="mb-2">
+                                                    <label class="form-label" for="categoria">Categoria</label>
+                                                    <select class="form-select" name="categoria" id="categoria">
+                                                        <option disabled selected>Selecionar</option>
+                                                        @foreach ($categorias as $categoria)
+                                                            @php
+                                                                $selecionado = $categoria->id == $termo->categoria_id;
+                                                            @endphp
+                                                            <option value="{{$categoria->id}}" {{ $selecionado ? 'selected' : '' }}>
+                                                                {{$categoria->sigla}}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="mb-2">
+                                                    <label class="form-label" for="foco">Foco</label>
+                                                    <select class="form-select" name="foco" id="foco">
+                                                        <option disabled selected>Selecionar</option>
+                                                        @foreach ($focos as $foco)
+                                                            @php
+                                                                $selecionado = $foco->id == $termo->foco_id;
+                                                            @endphp
+                                                            <option value="{{$foco->id}}" {{ $selecionado ? 'selected' : '' }}>
+                                                                {{$foco->nome_eixo}}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                @if ($termo->julgamento_id)
+                                                    <div class="mb-2 d-flex flex-column">
+                                                        <label class="form-label" for="julgamento">Julgamento</label>
+                                                        <select class="form-select" name="julgamento" id="julgamento">
+                                                            <option disabled selected>Selecionar</option>
+                                                            @foreach ($julgamentos as $julgamento)
+                                                                @php
+                                                                    $selecionado = $julgamento->id == $termo->julgamento_id;
+                                                                @endphp
+                                                                <option value="{{$julgamento->id}}" {{ $selecionado ? 'selected' : '' }}>
+                                                                    {{$julgamento->nome_eixo}}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                @endif
+                                                @if ($termo->acao_id)
+                                                    <div class="mb-2 d-flex flex-column">
+                                                        <label class="form-label" for="acao">Ação</label>
+                                                        <select class="form-select" name="acao" id="acao">
+                                                            <option disabled selected>Selecionar</option>
+                                                            @foreach ($acoes as $acao)
+                                                                @php
+                                                                    $selecionado = $acao->id == $termo->acao_id;
+                                                                @endphp
+                                                                <option value="{{$acao->id}}" {{ $selecionado ? 'selected' : '' }}>
+                                                                    {{$acao->nome_eixo}}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                @endif
                                                 <div class="botoesModal">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                                     <button type="submit" class="btn-salvar">Salvar</button>
@@ -150,6 +222,9 @@
                 @endforeach
             </tbody>
         </table>
+        <div>
+            {{$termos->appends(['filtrarTermos' => $categoriaId])->links()}}
+        </div>
     </div>
 </div>
 

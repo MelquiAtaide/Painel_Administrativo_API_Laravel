@@ -20,27 +20,34 @@ use App\Http\Controllers\EixoController;
 Route::get('/login', [LoginController::class, 'redirecionarLogin'])->name('redirecionar.login');
 Route::post('/logar', [LoginController::class, 'logar'])->name('logar');
 
-Route::get('/', [DashboardController::class, 'redirecionarDashboard'])->name('redirecionar.dashboard');
+Route::middleware(['auth'])->prefix('admin')->group(function () {
 
-Route::get('/usuarios', [UsuariosController::class, 'listarUsuarios'])->name('listar.usuarios');
-Route::post('/usuarios', [UsuariosController::class, 'cadastrarUsuario'])->name('cadastrar.usuario');
-Route::delete('/usuarios/deletar/{id}', [UsuariosController::class, 'deletarUsuario'])->name('deletar.usuario');
-Route::put('/usuarios/editar/{id}', [UsuariosController::class, 'editarUsuario'])->name('editar.usuario');
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+    // Route::get('/', [UsuariosController::class, 'index'])->name('redirecionar.index');
+    Route::get('/usuarios', [UsuariosController::class, 'listarUsuarios'])->name('listar.usuarios');
+    Route::post('/usuarios', [UsuariosController::class, 'cadastrarUsuario'])->name('cadastrar.usuario');
+    Route::delete('/usuarios/deletar/{id}', [UsuariosController::class, 'deletarUsuario'])->name('deletar.usuario');
+    Route::put('/usuarios/editar/{id}', [UsuariosController::class, 'editarUsuario'])->name('editar.usuario');
 
-Route::get('/termo', [TermoController::class, 'listarTermo'])->name('listar.termo');
-Route::post('/termo', [TermoController::class, 'cadastrarTermo'])->name('cadastrar.termo');
-Route::delete('/termo/deletar/{id}', [TermoController::class, 'deletarTermo'])->name('deletar.termo');
-Route::put('/termo/editar/{id}', [TermoController::class, 'editarTermo'])->name('editar.termo');
+    Route::get('/termo', [TermoController::class, 'listarTermo'])->name('listar.termo');
+    Route::post('/termo', [TermoController::class, 'cadastrarTermo'])->name('cadastrar.termo');
+    Route::delete('/termo/deletar/{id}', [TermoController::class, 'deletarTermo'])->name('deletar.termo');
+    Route::put('/termo/editar/{id}', [TermoController::class, 'editarTermo'])->name('editar.termo');
+    Route::get('/termo/filtrar', [TermoController::class, 'listarTermo'])->name('filtrar.termos');
 
-Route::get('/categorias', [CategoriasController::class, 'listarCategorias'])->name('listar.categorias');
-Route::post('/categorias', [CategoriasController::class, 'cadastrarCategorias'])->name('cadastrar.categorias');
-Route::delete('/categoria/deletar/{id}', [CategoriasController::class, 'deletarCategoria'])->name('deletar.categoria');
-Route::put('/categoria/editar/{id}', [CategoriasController::class, 'editarCategoria'])->name('editar.categoria');
+    Route::get('/categorias', [CategoriasController::class, 'listarCategorias'])->name('listar.categorias');
+    Route::post('/categorias', [CategoriasController::class, 'cadastrarCategorias'])->name('cadastrar.categorias');
+    Route::delete('/categoria/deletar/{id}', [CategoriasController::class, 'deletarCategoria'])->name('deletar.categoria');
+    Route::put('/categoria/editar/{id}', [CategoriasController::class, 'editarCategoria'])->name('editar.categoria');
 
-Route::get('/eixo', [EixoController::class, 'listarEixo'])->name('listar.eixo');
-Route::post('/eixo', [EixoController::class, 'cadastrarEixo'])->name('cadastrar.eixo');
-Route::delete('/eixo/deletar/{id}', [EixoController::class, 'deletarEixo'])->name('deletar.eixo');
-Route::put('/eixo/editar/{id}', [EixoController::class, 'editarEixo'])->name('editar.eixo');
+    Route::get('/eixo', [EixoController::class, 'listarEixo'])->name('listar.eixo');
+    Route::post('/eixo', [EixoController::class, 'cadastrarEixo'])->name('cadastrar.eixo');
+    Route::delete('/eixo/deletar/{id}', [EixoController::class, 'deletarEixo'])->name('deletar.eixo');
+    Route::put('/eixo/editar/{id}', [EixoController::class, 'editarEixo'])->name('editar.eixo');
+});
+
+
+
 
 
 

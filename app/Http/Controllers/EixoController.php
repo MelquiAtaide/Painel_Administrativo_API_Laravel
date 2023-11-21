@@ -11,7 +11,7 @@ class EixoController extends Controller
 {
     public function listarEixo(){
         $tipos = TipoEixo::all();
-        $eixos = Eixos::all();
+        $eixos = Eixos::orderBy('nome_eixo', 'asc')->paginate(5);
         return view('admin.eixo', [
             'eixos' => $eixos,
             'tipos' => $tipos
