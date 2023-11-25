@@ -25,7 +25,7 @@ class LoginController extends Controller
     }
     public function logout(){
         Auth::logout();
-        Session::flush();
+        $request->session()->flush();
         return redirect()->route('redirecionar.login');
     }
 }

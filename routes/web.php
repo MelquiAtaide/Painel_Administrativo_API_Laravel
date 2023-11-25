@@ -20,10 +20,10 @@ use App\Http\Controllers\EixoController;
 Route::get('/login', [LoginController::class, 'redirecionarLogin'])->name('redirecionar.login');
 Route::post('/logar', [LoginController::class, 'logar'])->name('logar');
 
-Route::middleware(['auth'])->prefix('admin')->group(function () {
+Route::middleware(['auth'])->group(function () {
 
+    Route::get('/', [UsuariosController::class, 'index'])->name('redirecionar.index');
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-    // Route::get('/', [UsuariosController::class, 'index'])->name('redirecionar.index');
     Route::get('/usuarios', [UsuariosController::class, 'listarUsuarios'])->name('listar.usuarios');
     Route::post('/usuarios', [UsuariosController::class, 'cadastrarUsuario'])->name('cadastrar.usuario');
     Route::delete('/usuarios/deletar/{id}', [UsuariosController::class, 'deletarUsuario'])->name('deletar.usuario');
