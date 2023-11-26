@@ -23,7 +23,7 @@ class LoginController extends Controller
         }
         return redirect()->back()->withErrors('As credenciais fornecidas são inválidas.');
     }
-    public function logout(){
+    public function logout(Request $request){
         Auth::logout();
         $request->session()->flush();
         return redirect()->route('redirecionar.login');
