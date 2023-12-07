@@ -37,4 +37,28 @@ class UsuarioController extends Controller
         }
         return response()->json(['erro' => 'Credenciais inválidas'], 200);
     }
+
+    public function cadastrarUsuario(Request $request){
+        try {
+            $usuario = new Usuarios;
+            $senha = Hash::make($request->senha);
+
+            $usuario->nome = $request->nome;
+            $usuario->email = $request->email;
+            $usuario->senha = $senha;
+            $usuario->perfil_id = 2;
+
+            $usuario->save();
+            return response()->json([
+                'success' => true,
+                'message' => 'Cadastro realizado com sucesso!',
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Erro ao cadastrar usuário.',
+                'error' => $th->getMessage(), // Adicione mais informações de erro se necessário
+            ], 500);
+        }
+    }
 }

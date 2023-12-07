@@ -29,21 +29,15 @@ class TermoController extends Controller
         $usuarioId = $request->input('usuario_id');
         $termoId = $request->input('termo_id');
 
-        // Verifique se o termo já é um favorito
         $favoritoExistente = Favorito::where('usuario_id', $usuarioId)
             ->where('termo_id', $termoId)
             ->first();
 
         if ($favoritoExistente) {
-            // Se já for favorito, remova
             $favoritoExistente->delete();
             return response()->json(['status' => 'removido']);
         } else {
-        // Se não for favorito, adicione
         try {
-            //code...
-            // Favoritos::create(['usuario_id' => $usuarioId, 'termo_id' => $termoId]);
-
             $favorito = new Favorito;
             $favorito->usuario_id = $usuarioId;
             $favorito->termo_id = $termoId;

@@ -10,3 +10,4 @@ Route::get('/favoritos', [TermoController::class, 'favoritos']);
 Route::post('/Alterar-favoritos', [TermoController::class, 'AlterarFavorito']);
 
 Route::post('/logar', [UsuarioController::class, 'logar']);
+Route::post('/cadastrar-usuario', [UsuarioController::class, 'cadastrarUsuario']);
