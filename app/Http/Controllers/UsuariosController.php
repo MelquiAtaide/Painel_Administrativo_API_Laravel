@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\cadastrarUsuarioRequest;
+use App\Http\Requests\editarUsuarioRequest;
 use App\Models\Usuarios;
 use App\Models\Perfil;
 use Illuminate\Support\Facades\Hash;
@@ -46,14 +47,13 @@ class UsuariosController extends Controller
         }
 
     }
-    public function editarUsuario(cadastrarUsuarioRequest $request, $id){
+    public function editarUsuario(editarUsuarioRequest $request, $id){
         try {
             $usuario = Usuarios::where('id', $id)->first();
-            $senha = Hash::make($request->senha);
 
             $usuario->nome = $request->nome;
             $usuario->email = $request->email;
-            $usuario->senha = $senha;
+            $usuario->senha = Hash::make($request->input('nova-senha'));
             $usuario->perfil_id = $request->perfil;
 
             $usuario->save();

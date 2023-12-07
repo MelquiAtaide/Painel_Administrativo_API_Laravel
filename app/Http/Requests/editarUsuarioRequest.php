@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class editarUsuarioRequest extends FormRequest
@@ -23,10 +24,12 @@ class editarUsuarioRequest extends FormRequest
     {
         return [
             'nome' => 'required|string|max:255',
-            'email' => 'required|email|unique:usuarios,email',
+            'email' => [
+                'required','email',Rule::unique('usuarios')->ignore($this->route('id')),
+            ],
             'perfil' => 'required',
-            'senha' => 'nullable|min:8|max:100',
-            'confirmar-senha' => 'nullable|same:senha'
+            'nova-senha' => 'nullable|min:8|max:100',
+            'confirmar-nova-senha' => 'nullable|same:nova-senha'
         ];
     }
     public function messages(){
@@ -38,11 +41,9 @@ class editarUsuarioRequest extends FormRequest
             'email.email' => 'O campo E-mail deve ser um endereço de e-mail válido!',
             'email.unique' => 'E-mail usado já possui cadastro!',
             'perfil.required' => 'Selecione um perfil!',
-            'senha.required' => 'O campo senha é obrigatório!',
-            'senha.min' => 'O campo senha deve ter mais de 8 caracteres!',
-            'senha.max' => 'O campo senha deve ter no máximo 100 caracteres!',
-            'confirmar-senha.required' => 'Confirmar a senha é obrigatório!',
-            'confirmar-senha.same' => 'As senhas devem ser iguais!',
+            'nova-senha.min' => 'O campo nova-senha deve ter mais de 8 caracteres!',
+            'nova-senha.max' => 'O campo nova-senha deve ter no máximo 100 caracteres!',
+            'confirmar-nova-senha.same' => 'As senhas devem ser iguais!',
         ];
     }
 }

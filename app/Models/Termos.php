@@ -22,4 +22,8 @@ class Termos extends Model
     public function acao(){
         return $this->belongsTo(Eixos::class, 'acao_id', 'id');
     }
+    public function favoritos()
+    {
+        return $this->hasMany(Favorito::class, 'termo_id');
+    }
 }

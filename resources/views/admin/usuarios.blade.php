@@ -125,12 +125,12 @@
                                                     </select>
                                                 </div>
                                                 <div class="mb-2">
-                                                    <label class="form-label" for="senha">Senha</label>
-                                                    <input type="password" class="form-control" name="senha" placeholder="Digite sua nova senha" value="{{$usuario->senha}}">
+                                                    <label class="form-label" for="nova-senha">Nova Senha</label>
+                                                    <input type="password" class="form-control" name="nova-senha" placeholder="Digite sua nova senha" >
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="form-label" for="confirmar-senha">Confirmar Senha</label>
-                                                    <input type="password" class="form-control" name="confirmar-senha" placeholder="Digite sua senha novamente" value="{{$usuario->senha}}">
+                                                    <label class="form-label" for="confirmar-nova-senha">Confirmar nova Senha</label>
+                                                    <input type="password" class="form-control" name="confirmar-nova-senha" placeholder="Digite sua nova senha novamente" >
                                                 </div>
                                                 <div class="botoesModal">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
