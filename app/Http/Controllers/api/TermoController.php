@@ -15,11 +15,12 @@ class TermoController extends Controller
 
     public function index()
     {
-        $termos = Termos::with('categoria', 'foco', 'julgamento', 'acao')->get();
+        $termos = Termos::with('categoria', 'foco', 'julgamento', 'acao')->paginate(10);
         return response()->json($termos);
     }
     public function favoritos(){
         $termosFavoritos = Favorito::where('usuario_id', 2)
+
             ->with('termo.foco', 'termo.julgamento', 'termo.acao')
             ->get();
 
